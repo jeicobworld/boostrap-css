@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes de CSS</title>
+    <!-- Bootstrap 5.3.3 (CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!--Estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- data-bs-spy: Bootstrap resalta en el menú la sección que estás viendo -->
+<body data-bs-spy="scroll" data-bs-target="#menu" data-bs-offset="120" tabindex="0">
+
+    <!-- NAVBAR FIJA -->
+    <!-- navbar-expand-lg: en móvil y tablet se vuelve en hamburguesa; en escritorio se ve completa -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top glass-nav" id="menu">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+                    <img src="img/css.png" alt="Logo de CSS3" class="brand-logo">
+                    <span>Ver CSS</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navLinks" aria-controls="navLinks"
+                        aria-expanded="false" aria-label="Abrir menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navLinks">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#temas">Temas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ============ INICIO: CARRUSEL ============ -->
+        <section id="inicio" class="hero">
+            <div class="container">
+                <!-- carousel-fade: transición suave entre slides en vez de deslizar -->
+                <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel"
+                     data-bs-ride="carousel" data-bs-interval="5000">
+
+                    <!-- Indicadores (puntitos) -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="hero-slide">
+                                <img src="img/css.png" alt="" class="hero-logo">
+                                <h1>Componentes de CSS</h1>
+                                <p>Ocho ideas clave para dar estilo a cualquier página web.</p>
+                                <a href="#temas" class="btn btn-css">Ver los temas</a>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="hero-slide">
+                                <h2>Aprende con ejemplos</h2>
+                                <p>Cada tema trae una explicación corta y un código que puedes copiar y probar.</p>
+                                <a href="#estructura" class="btn btn-css">Empezar por la sintaxis</a>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <div class="hero-slide">
+                                <h2>Pensado para cualquier pantalla</h2>
+                                <p>Esta página cambia su distribución en celular, tablet y computador.</p>
+                                <a href="#media-queries" class="btn btn-css">Ver media queries</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flechas -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TEMAS: GRID DE TARJETAS ============ -->
+        <section id="temas" class="topics">
+            <div class="container">
+                <h2 class="section-title">Temas</h2>
+
+                <!-- DISTRIBUCIÓN RESPONSIVA (Bootstrap row-cols):
+                      - Celular  (<768px)  : 1 columna, imagen arriba y texto abajo
+                      - Tablet   (>=768px) : 2 columnas
+                      - Escritorio (>=992px): 1 columna ancha, tarjeta horizontal en zigzag
+                      (el zigzag y lo horizontal se hace en styles.css)-->
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-1 g-4">
+
+                    <!-- ---------- 1. Estructura y sintaxis ---------- -->
+                    <article class="col" id="estructura">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--CARRUSEL DE LA TARJETA-->
+                                <div id="vis-estructura" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-estructura" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-estructura" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/estructura.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/estructura.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                                <pre><code><span class="tk-sel">h1</span> {
+                                                  <span class="tk-prop">color</span>: <span class="tk-val">#2965f1</span>;
+                                                  <span class="tk-prop">font-size</span>: <span class="tk-val">2rem</span>;
+                                                }</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-estructura" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-estructura" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Estructura y sintaxis</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#estructura-facil"
+                                                aria-controls="estructura-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#estructura-tecnico"
+                                                aria-controls="estructura-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="estructura-facil" role="tabpanel">
+                                        <p>Imagina que le das órdenes a un robot. Primero le dices <strong>a quién</strong> le hablas: <code>h1</code> significa "los títulos grandes". Luego abres una caja con llaves <code>{ }</code>. Dentro le dices <strong>qué</strong> cambiar (<code>color</code>) y <strong>cómo</strong> (<code>blue</code>, azul), con dos puntos en medio.</p>
+                                        <p>Cada orden termina con punto y coma <code>;</code>. Si te olvidas de uno, el robot se confunde y puede ignorar tu orden.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="estructura-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li>Una <strong>regla</strong> (rule set) = <em>selector</em> + <em>bloque de declaraciones</em>. Cada declaración es <code>propiedad: valor;</code>.</li>
+                                            <li>Selectores básicos: tipo (<code>h1</code>), clase (<code>.card</code>), id (<code>#menu</code>), atributo (<code>[type="text"]</code>) y universal (<code>*</code>).</li>
+                                            <li>Combinadores: descendiente (espacio), hijo directo (<code>&gt;</code>), hermano adyacente (<code>+</code>) y hermano general (<code>~</code>). La coma agrupa selectores.</li>
+                                            <li>Si una declaración es inválida, el navegador la descarta y sigue con la siguiente <code>;</code>. El resto del bloque sí se aplica.</li>
+                                            <li>Tipos de valor: longitudes (<code>px</code>, <code>rem</code>, <code>%</code>), colores (<code>#hex</code>, <code>rgb()</code>, <code>hsl()</code>) y funciones (<code>calc()</code>, <code>var()</code>).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 2. Tipos de incorporación ---------- -->
+                    <article class="col" id="incorporacion">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--
+                                    CARRUSEL DE LA TARJETA: slide 1 = video, slide 2 = código.
+                                    Pon tu video en la carpeta video/ con el nombre video/incorporacion.mp4
+                                    (o cambia el src). Para usar un GIF o imagen en vez de video,
+                                    reemplaza <video> por <img src="img/mi-gif.gif" alt="...">
+                                -->
+                                <div id="vis-incorporacion" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-incorporacion" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-incorporacion" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/incorporacion.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/incorporacion.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                                <pre><code><span class="tk-com">&lt;!-- Externo --&gt;</span>
+                                                &lt;link rel="stylesheet" href="styles.css"&gt;
+                                                
+                                                <span class="tk-com">&lt;!-- Interno --&gt;</span>
+                                                &lt;style&gt;
+                                                  p { color: gray; }
+                                                &lt;/style&gt;</code></pre>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-incorporacion" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-incorporacion" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Tipos de incorporación</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#incorporacion-facil"
+                                                aria-controls="incorporacion-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#incorporacion-tecnico"
+                                                aria-controls="incorporacion-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="incorporacion-facil" role="tabpanel">
+                                        <p>Piensa que el HTML es un muñeco y el CSS es su ropa. Hay tres formas de vestirlo:</p>
+                                        <p><strong>Externo:</strong> la ropa está en un armario aparte (el archivo <code>styles.css</code>) y el muñeco la toma con <code>&lt;link&gt;</code>. Sirve para vestir a muchos muñecos (páginas) con la misma ropa.</p>
+                                        <p><strong>Interno:</strong> la ropa va en una bolsita pegada al muñeco (<code>&lt;style&gt;</code>). Solo sirve para esa página.</p>
+                                        <p><strong>En línea:</strong> le pegas la ropa directo a una sola parte (<code>style="color:red"</code>). Es rápido, pero queda desordenado.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="incorporacion-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li><strong>Externo:</strong> <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code> en el <code>&lt;head&gt;</code>. Se cachea entre páginas, pero bloquea el renderizado hasta que se descarga y se construye el CSSOM.</li>
+                                            <li><strong>Interno:</strong> <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code>. No hace petición HTTP extra, pero no se reutiliza entre páginas.</li>
+                                            <li><strong>En línea:</strong> atributo <code>style=""</code>. Especificidad más alta (1000) y no admite pseudo-clases, pseudo-elementos ni media queries.</li>
+                                            <li>Evita <code>@import</code> dentro del CSS: serializa las descargas y retrasa el render.</li>
+                                            <li>Con el mismo peso gana la regla declarada <strong>más abajo</strong>, por eso el CSS propio va después del de Bootstrap.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 3. Identación, herencia y comentarios ---------- -->
+                    <article class="col" id="herencia">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--
+                                    CARRUSEL DE LA TARJETA: slide 1 = video, slide 2 = código.
+                                    Pon tu video en la carpeta video/ con el nombre video/herencia.mp4
+                                    (o cambia el src). Para usar un GIF o imagen en vez de video,
+                                    reemplaza <video> por <img src="img/mi-gif.gif" alt="...">
+                                -->
+                                <div id="vis-herencia" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-herencia" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-herencia" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/herencia.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/herencia.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                                <pre><code><span class="tk-com">/* El texto de todo el body será gris */</span>
+                                                <span class="tk-sel">body</span> {
+                                                  <span class="tk-prop">color</span>: <span class="tk-val">#444</span>;
+                                                }
+                                                <span class="tk-com">/* p hereda el color de body */</span>
+                                                <span class="tk-sel">p</span> {
+                                                  <span class="tk-prop">font-size</span>: <span class="tk-val">1rem</span>;
+                                                }</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-herencia" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-herencia" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Identación, herencia y comentarios</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#herencia-facil"
+                                                aria-controls="herencia-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#herencia-tecnico"
+                                                aria-controls="herencia-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="herencia-facil" role="tabpanel">
+                                        <p><strong>Identación:</strong> dejar espacios al inicio de cada línea, como el margen de un cuaderno. No cambia lo que hace el código, solo lo hace fácil de leer.</p>
+                                        <p><strong>Herencia:</strong> es como un hijo que se parece a sus papás. Si le pones color gris a <code>body</code> (el papá), todos los párrafos (los hijos) lo copian solos. Pero no todo se hereda: el borde no pasa de padres a hijos.</p>
+                                        <p><strong>Comentarios:</strong> son notas secretas entre <code>/* y */</code>. El navegador no las lee, solo las personas.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="herencia-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li><strong>Se heredan por defecto:</strong> <code>color</code>, <code>font-family</code>, <code>font-size</code>, <code>line-height</code>, <code>text-align</code>, <code>visibility</code>, <code>cursor</code>, <code>list-style</code>.</li>
+                                            <li><strong>No se heredan:</strong> <code>margin</code>, <code>padding</code>, <code>border</code>, <code>background</code>, <code>width</code>, <code>display</code>.</li>
+                                            <li>Palabras clave para controlarlo: <code>inherit</code> (copia al padre), <code>initial</code> (valor de la especificación), <code>unset</code> y <code>revert</code>.</li>
+                                            <li>Los comentarios solo existen como <code>/* */</code>. No hay <code>//</code> en CSS y no se pueden anidar.</li>
+                                            <li>Convención: 2 o 4 espacios de sangría y una declaración por línea. Al publicar se suele minificar.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 4. Niveles de especificidad ---------- -->
+                    <article class="col" id="especificidad">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--CARRUSEL DE LA TARJETA-->
+                                <div id="vis-especificidad" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-especificidad" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-especificidad" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/especificidad.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/especificidad.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                                <pre><code><span class="tk-sel">p</span>          { <span class="tk-prop">color</span>: <span class="tk-val">blue</span>; }  <span class="tk-com">/* 1 */</span>
+                                                <span class="tk-sel">.texto</span>     { <span class="tk-prop">color</span>: <span class="tk-val">green</span>; } <span class="tk-com">/* 10 */</span>
+                                                <span class="tk-sel">#titulo</span>    { <span class="tk-prop">color</span>: <span class="tk-val">red</span>; }   <span class="tk-com">/* 100 */</span>
+                                                <span class="tk-com">/* style="" en línea = 1000 */</span></code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-especificidad" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-especificidad" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Niveles de especificidad</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#especificidad-facil"
+                                                aria-controls="especificidad-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#especificidad-tecnico"
+                                                aria-controls="especificidad-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="especificidad-facil" role="tabpanel">
+                                        <p>Si una orden dice "rojo" y otra dice "azul" para lo mismo, el navegador tiene que elegir. Gana la más <strong>fuerte</strong>, y la fuerza se mide en puntos:</p>
+                                        <p>La etiqueta <code>p</code> vale <strong>1</strong>, la clase <code>.texto</code> vale <strong>10</strong>, el id <code>#titulo</code> vale <strong>100</strong> y lo escrito directo con <code>style=""</code> vale <strong>1000</strong>. Gana quien tenga más puntos. Si empatan, gana la que está escrita más abajo.</p>
+                                        <p><code>!important</code> es como gritar: casi siempre gana, pero si todos gritan se arma un caos.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="especificidad-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li>La especificidad es un vector <strong>(a, b, c)</strong>: <em>a</em> = ids, <em>b</em> = clases, atributos y pseudo-clases, <em>c</em> = tipos y pseudo-elementos.</li>
+                                            <li>Se compara de izquierda a derecha: 11 clases <strong>no</strong> superan a 1 id. Lo de 1, 10 y 100 es solo un atajo para entenderlo.</li>
+                                            <li>Ejemplo: <code>nav ul li.activo a:hover</code> = (0, 2, 4).</li>
+                                            <li><code>*</code>, los combinadores y <code>:where()</code> aportan 0. <code>:is()</code> y <code>:not()</code> toman el argumento más específico.</li>
+                                            <li>Orden de resolución en la cascada: origen e <code>!important</code> → <code>@layer</code> → especificidad → orden de aparición.</li>
+                                            <li>Buena práctica: baja especificidad (clases) y evita ids y <code>!important</code> en los estilos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 5. Flexbox, Grid y breakpoints ---------- -->
+                    <article class="col" id="flexbox-grid">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--CARRUSEL DE LA TARJETA-->
+                                <div id="vis-flexbox-grid" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-flexbox-grid" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-flexbox-grid" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/flexbox-grid.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/flexbox-grid.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                <div class="demo-flex" aria-label="Demostración de flexbox">
+                                    <span>1</span><span>2</span><span>3</span>
+                                </div>
+                                    <pre><code><span class="tk-sel">.contenedor</span> {
+                                      <span class="tk-prop">display</span>: <span class="tk-val">flex</span>;
+                                      <span class="tk-prop">gap</span>: <span class="tk-val">1rem</span>;
+                                    }</code></pre>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-flexbox-grid" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-flexbox-grid" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Flexbox, Grid y breakpoints</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#flexbox-grid-facil"
+                                                aria-controls="flexbox-grid-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#flexbox-grid-tecnico"
+                                                aria-controls="flexbox-grid-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="flexbox-grid-facil" role="tabpanel">
+                                        <p><strong>Flexbox:</strong> es una fila de niños en un pasillo. Con <code>display: flex</code> todos se ponen uno al lado del otro, y tú decides si van juntos, separados o centrados.</p>
+                                        <p><strong>Grid:</strong> es un cuaderno cuadriculado. Tú dices cuántas filas y columnas hay, y pones cada cosa en su casilla.</p>
+                                        <p><strong>Breakpoints:</strong> son las medidas donde la pantalla "cambia de talla" (celular, tablet, computador) y la página cambia de forma. En Bootstrap son 576, 768, 992, 1200 y 1400&nbsp;px.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="flexbox-grid-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li><strong>Flexbox</strong> es unidimensional: eje principal (<code>flex-direction</code>) y eje cruzado. <code>justify-content</code> alinea en el principal y <code>align-items</code> en el cruzado.</li>
+                                            <li>Cada item usa <code>flex: grow shrink basis</code>. También <code>flex-wrap</code> y <code>gap</code>.</li>
+                                            <li><strong>Grid</strong> es bidimensional: <code>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))</code>, <code>grid-template-areas</code>, unidad <code>fr</code>, <code>gap</code>.</li>
+                                            <li>Regla práctica: flex cuando el <em>contenido</em> manda en el tamaño (barras de menú). Grid cuando el <em>layout</em> manda (rejillas de tarjetas).</li>
+                                            <li>Breakpoints de Bootstrap 5 (<code>min-width</code>, mobile-first): sm 576, md 768, lg 992, xl 1200, xxl 1400.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 6. Media queries ---------- -->
+                    <article class="col" id="media-queries">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--CARRUSEL DE LA TARJETA-->
+                                <div id="vis-media-queries" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-media-queries" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-media-queries" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/media-queries.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/media-queries.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                                <pre><code><span class="tk-sel">.tarjeta</span> { <span class="tk-prop">width</span>: <span class="tk-val">100%</span>; }
+                                                
+                                                <span class="tk-at">@media</span> (min-width: 768px) {
+                                                  <span class="tk-sel">.tarjeta</span> { <span class="tk-prop">width</span>: <span class="tk-val">50%</span>; }
+                                                }</code></pre>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-media-queries" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-media-queries" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Media queries</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#media-queries-facil"
+                                                aria-controls="media-queries-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#media-queries-tecnico"
+                                                aria-controls="media-queries-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="media-queries-facil" role="tabpanel">
+                                        <p>Es una regla de "si… entonces". Por ejemplo: <strong>SI</strong> la pantalla mide 768 píxeles o más, <strong>ENTONCES</strong> pon dos columnas.</p>
+                                        <p>Un celular es angosto y un computador es ancho. Se empieza diseñando para el celular (una columna) y se agregan <code>@media</code> que dicen "si la pantalla crece, cámbialo así".</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="media-queries-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li>Sintaxis: <code>@media (min-width: 768px) { ... }</code>. Se aplica solo si la condición es verdadera.</li>
+                                            <li>Tipos: <code>screen</code>, <code>print</code>. Características: <code>width</code>, <code>height</code>, <code>orientation</code>, <code>prefers-color-scheme</code>, <code>prefers-reduced-motion</code>, <code>hover</code>, <code>resolution</code>.</li>
+                                            <li>Operadores: <code>and</code>, <code>not</code>, <code>only</code>. La coma funciona como "o". Sintaxis moderna de rangos: <code>@media (width &gt;= 768px)</code>.</li>
+                                            <li><strong>Mobile-first</strong> usa <code>min-width</code> (menos CSS por sobrescribir). <strong>Desktop-first</strong> usa <code>max-width</code>. Bootstrap usa <code>767.98px</code> para evitar solapamientos con zoom decimal.</li>
+                                            <li>Requiere <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>. Para adaptar un componente y no la página entera existen las <code>@container</code> queries.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 7. Pseudo-elementos y pseudo-clases ---------- -->
+                    <article class="col" id="pseudo">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--
+                                    CARRUSEL DE LA TARJETA: slide 1 = video, slide 2 = código.
+                                    Pon tu video en la carpeta video/ con el nombre video/pseudo.mp4
+                                    (o cambia el src). Para usar un GIF o imagen en vez de video,
+                                    reemplaza <video> por <img src="img/mi-gif.gif" alt="...">
+                                -->
+                                <div id="vis-pseudo" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-pseudo" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-pseudo" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/pseudo.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/pseudo.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                <button type="button" class="demo-hover">Pasa el mouse</button>
+                                    <pre><code><span class="tk-sel">button:hover</span> {
+                                      <span class="tk-prop">background</span>: <span class="tk-val">#33a9dc</span>;
+                                    }
+                                    <span class="tk-sel">button::after</span> {
+                                      <span class="tk-prop">content</span>: <span class="tk-val">" ★"</span>;
+                                    }</code></pre>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-pseudo" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-pseudo" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Pseudo-elementos y pseudo-clases</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#pseudo-facil"
+                                                aria-controls="pseudo-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#pseudo-tecnico"
+                                                aria-controls="pseudo-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="pseudo-facil" role="tabpanel">
+                                        <p><strong>Pseudo-clase (un <code>:</code>)</strong> es el "estado de ánimo" de un elemento. Un botón está tranquilo, pero cuando le pasas el mouse encima se emociona (<code>:hover</code>). Cuando lo aprietas está <code>:active</code>. Y <code>:first-child</code> es "el primero de la fila".</p>
+                                        <p><strong>Pseudo-elemento (dos <code>::</code>)</strong> es un pedacito invisible que CSS puede inventar. <code>::after</code> pone un adorno <em>después</em> del texto, como una estrella ★, sin escribirla en el HTML.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="pseudo-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li><strong>Pseudo-clases</strong> (<code>:</code>): dinámicas (<code>:hover</code>, <code>:focus</code>, <code>:focus-visible</code>, <code>:active</code>), estructurales (<code>:nth-child(2n+1)</code>, <code>:first-child</code>, <code>:last-of-type</code>), de formulario (<code>:checked</code>, <code>:disabled</code>, <code>:invalid</code>) y lógicas (<code>:not()</code>, <code>:is()</code>, <code>:where()</code>, <code>:has()</code>).</li>
+                                            <li><strong>Pseudo-elementos</strong> (<code>::</code>): <code>::before</code> y <code>::after</code> solo se generan si defines <code>content</code> (aunque sea <code>""</code>). Son inline por defecto.</li>
+                                            <li>Otros: <code>::placeholder</code>, <code>::selection</code>, <code>::marker</code>, <code>::first-letter</code>, <code>::first-line</code>.</li>
+                                            <li>El contenido de <code>::before</code> y <code>::after</code> no se puede seleccionar ni está en el DOM: úsalo para decoración, no para información importante.</li>
+                                            <li>CSS3 separó la sintaxis: <code>:</code> para clases y <code>::</code> para elementos. Los navegadores aceptan <code>:before</code> por compatibilidad.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ---------- 8. Z-index ---------- -->
+                    <article class="col" id="z-index">
+                        <div class="topic-card">
+                            <div class="topic-visual">
+                                <!--
+                                    CARRUSEL DE LA TARJETA: slide 1 = video, slide 2 = código.
+                                    Pon tu video en la carpeta video/ con el nombre video/z-index.mp4
+                                    (o cambia el src). Para usar un GIF o imagen en vez de video,
+                                    reemplaza <video> por <img src="img/mi-gif.gif" alt="...">
+                                -->
+                                <div id="vis-z-index" class="carousel slide visual-carousel"
+                                     data-bs-ride="false" data-bs-interval="false">
+
+                                    <!-- Pestañas: dicen en qué slide estás -->
+                                    <div class="carousel-indicators visual-tabs">
+                                        <button type="button" data-bs-target="#vis-z-index" data-bs-slide-to="0" class="active" aria-current="true">Video</button>
+                                        <button type="button" data-bs-target="#vis-z-index" data-bs-slide-to="1">Código</button>
+                                    </div>
+
+                                    <div class="carousel-inner">
+                                        <!-- SLIDE 1: VIDEO -->
+                                        <div class="carousel-item active">
+                                            <div class="video-wrap">
+                                                <video controls preload="metadata" playsinline>
+                                                    <source src="video/z-index.mp4" type="video/mp4">
+                                                </video>
+                                                <p class="video-fallback">Aquí va el video:<br><code>video/z-index.mp4</code></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- SLIDE 2: CÓDIGO -->
+                                        <div class="carousel-item">
+                                            <div class="code-slide">
+                                <div class="demo-z" aria-label="Demostración de z-index">
+                                    <div class="z1">z-index: 1</div>
+                                    <div class="z2">z-index: 2</div>
+                                    <div class="z3">z-index: 3</div>
+                                </div>
+                                    <pre><code><span class="tk-sel">.caja</span> {
+                                      <span class="tk-prop">position</span>: <span class="tk-val">absolute</span>;
+                                      <span class="tk-prop">z-index</span>: <span class="tk-val">3</span>;
+                                    }</code></pre>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Flechas para cambiar entre video y código -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#vis-z-index" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Anterior</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#vis-z-index" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Siguiente</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="topic-body">
+                                <h3>Z-index</h3>
+
+                                <!-- Pestañas: explicación para principiantes / explicación técnica -->
+                                <ul class="nav nav-pills level-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#z-index-facil"
+                                                aria-controls="z-index-facil" aria-selected="true">Explicado fácil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" type="button" role="tab"
+                                                data-bs-toggle="pill" data-bs-target="#z-index-tecnico"
+                                                aria-controls="z-index-tecnico" aria-selected="false">Técnico</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <!-- Nivel 1: como si le explicaras a un niño -->
+                                    <div class="tab-pane fade show active" id="z-index-facil" role="tabpanel">
+                                        <p>Imagina hojas de papel apiladas sobre una mesa. La hoja de arriba tapa a la de abajo. <code>z-index</code> es el número que dice <strong>cuál va arriba</strong>: el 3 le gana al 1.</p>
+                                        <p>Ojo: solo funciona si el elemento está "suelto" con <code>position</code> (<code>relative</code>, <code>absolute</code>, <code>fixed</code> o <code>sticky</code>). Si la hoja está pegada a la mesa, el número no hace nada.</p>
+                                    </div>
+                                    <!-- Nivel 2: para quien ya sabe -->
+                                    <div class="tab-pane fade" id="z-index-tecnico" role="tabpanel">
+                                        <ul>
+                                            <li>Aplica a elementos con <code>position</code> distinto de <code>static</code> y a los items de un contenedor flex o grid.</li>
+                                            <li>Cada <strong>contexto de apilamiento</strong> (stacking context) es una "caja cerrada": un hijo con <code>z-index: 9999</code> dentro de un padre con <code>z-index: 1</code> sigue debajo de un hermano del padre con <code>z-index: 2</code>.</li>
+                                            <li>Crean contexto: <code>z-index</code> distinto de <code>auto</code> en elementos posicionados, <code>opacity &lt; 1</code>, <code>transform</code>, <code>filter</code>, <code>position: fixed</code> o <code>sticky</code>, <code>isolation: isolate</code> y <code>will-change</code>.</li>
+                                            <li>Orden de pintado dentro de un contexto: fondo → z-index negativos → bloques → flotantes → inline → <code>z-index: 0/auto</code> → positivos.</li>
+                                            <li>Buena práctica: una escala con variables (<code>--z-nav: 100</code>, <code>--z-modal: 1000</code>) y no usar valores como 9999. Bootstrap usa 1030 en la navbar fija y 1055 en los modales.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bootstrap 5.3.3 (JS) con Popper: necesario para el carrusel y el menú hamburguesa -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // Al cambiar de slide (video <-> código) se pausa cualquier video
+        document.addEventListener('slide.bs.carousel', function (e) {
+            e.target.querySelectorAll('video').forEach(function (v) { v.pause(); });
+        });
+
+        // Si el archivo de video no existe, se oculta el reproductor y se muestra el aviso
+        // (el evento "error" no sube por el DOM, por eso se escucha en fase de captura: true)
+        document.addEventListener('error', function (e) {
+            if (e.target.tagName === 'SOURCE') {
+                e.target.closest('.video-wrap').classList.add('no-video');
+            }
+        }, true);
+    </script>
+</body>
+</html>

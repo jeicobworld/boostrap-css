@@ -1,0 +1,530 @@
+/* ---------- 1) VARIABLES ---------- */
+:root {
+    --css-blue: #2965f1;          /* azul del logo de CSS3 */
+    --css-light: #33a9dc;         /* azul claro del logo */
+    --text: #e8eef7;
+    --text-soft: #b9c6d8;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    --radius: 20px;
+}
+
+/* ---------- 2) BASE ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;           /* desplazamiento suave al usar el menú */
+}
+
+body {
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    color: var(--text);
+    background: #0b1220;               /* color de respaldo mientras carga la imagen */
+    line-height: 1.65;
+}
+
+/* Fondo fijo: usamos un pseudo-elemento en vez de background-attachment: fixed
+   porque en celulares (iOS) esa propiedad falla. El degradado es el overlay oscuro. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(8, 14, 28, 0.78), rgba(8, 14, 28, 0.88)),
+        url("img/fondoelegante.avif") center / cover no-repeat;
+}
+
+/* Al saltar a una sección, deja espacio para la navbar fija */
+section, article {
+    scroll-margin-top: 90px;
+}
+
+code {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85em;
+    color: #ffd479;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.1em 0.4em;
+    border-radius: 6px;
+}
+
+/* ---------- 3) NAVBAR ---------- */
+.glass-nav {
+    background: rgba(8, 14, 28, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.brand-logo {
+    height: 36px;
+    width: auto;
+    background: #fff;                  /* el logo tiene fondo blanco, así se ve limpio */
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.glass-nav .nav-link {
+    color: var(--text-soft);
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.glass-nav .nav-link:hover,
+.glass-nav .nav-link.active {
+    color: #fff;
+    background: rgba(41, 101, 241, 0.35);
+}
+
+/* Menú desplegado en celular/tablet: panel con fondo para que se lea */
+@media (max-width: 991.98px) {
+    .glass-nav .navbar-collapse {
+        margin-top: 0.75rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+/* ---------- 4) HERO / CARRUSEL ---------- */
+.hero {
+    padding: 110px 0 40px;             /* 110px arriba = espacio de la navbar fija */
+}
+
+.hero-carousel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow);
+    overflow: hidden;
+}
+
+.hero-slide {
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 3.5rem 4rem;       /* abajo más espacio para los puntitos */
+}
+
+.hero-slide h1,
+.hero-slide h2 {
+    font-weight: 700;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    margin-bottom: 0.75rem;
+}
+
+.hero-slide p {
+    max-width: 52ch;
+    color: var(--text-soft);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-logo {
+    height: 70px;
+    width: auto;
+    background: #fff;
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Botón con los colores de CSS */
+.btn-css {
+    background: var(--css-blue);
+    border: 1px solid var(--css-blue);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-css:hover,
+.btn-css:focus-visible {
+    background: var(--css-light);
+    border-color: var(--css-light);
+    color: #fff;
+}
+
+/* Flechas del carrusel más discretas */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%;
+    opacity: 0.6;
+}
+
+/* ---------- 5) TARJETAS (glassmorphism) ---------- */
+.topics {
+    padding: 30px 0 70px;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    margin-bottom: 1.5rem;
+}
+
+.topic-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;            /* CELULAR y TABLET: visual arriba, texto abajo */
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    box-shadow: var(--glass-shadow);
+    overflow: hidden;
+}
+
+.topic-visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1.25rem;
+    background: rgba(8, 14, 28, 0.45);
+}
+
+.topic-visual img,
+.topic-visual video {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.topic-visual pre {
+    margin: 0;
+    overflow-x: auto;                  /* si el código es largo, hace scroll y no rompe la tarjeta */
+}
+
+.topic-visual code {
+    background: none;
+    padding: 0;
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.topic-body {
+    padding: 1.5rem;
+}
+
+.topic-body h3 {
+    font-weight: 700;
+    font-size: 1.35rem;
+    margin-bottom: 0.6rem;
+}
+
+.topic-body p {
+    color: var(--text-soft);
+    margin: 0;
+}
+
+/* Colores del código */
+.tk-sel  { color: #7cc4ff; }
+.tk-prop { color: #ffd479; }
+.tk-val  { color: #9be39b; }
+.tk-com  { color: #8a97a8; font-style: italic; }
+.tk-at   { color: #f28cb1; }
+
+/* ---------- 6) DEMOS EN VIVO ---------- */
+
+/* Flexbox */
+.demo-flex {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.demo-flex span {
+    flex: 1;
+    text-align: center;
+    padding: 0.7rem 0;
+    border-radius: 10px;
+    background: var(--css-blue);
+    font-weight: 700;
+}
+
+/* Pseudo-clase :hover + pseudo-elemento ::after */
+.demo-hover {
+    align-self: flex-start;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+    background: var(--css-blue);
+    color: #fff;
+    font-family: inherit;
+    transition: background 0.2s;
+}
+
+.demo-hover::after {
+    content: " ★";
+}
+
+.demo-hover:hover {
+    background: var(--css-light);
+}
+
+/* Z-index: tres cajas superpuestas */
+.demo-z {
+    position: relative;
+    height: 110px;
+}
+
+.demo-z div {
+    position: absolute;
+    width: 120px;
+    height: 70px;
+    padding: 0.4rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.demo-z .z1 { top: 0;    left: 0;    z-index: 1; background: #2965f1; }
+.demo-z .z2 { top: 20px; left: 45px; z-index: 2; background: #33a9dc; }
+.demo-z .z3 { top: 40px; left: 90px; z-index: 3; background: #8e5cf0; }
+
+/* ---------- 8) RESPONSIVE ---------- */
+
+/* TABLET (>=768px): 2 columnas (lo hace Bootstrap con row-cols-md-2).
+   Aquí solo ajustamos espacios para que se vea más amplio. */
+@media (min-width: 768px) {
+    .topic-body {
+        padding: 1.75rem;
+    }
+    .hero-slide {
+        min-height: 400px;
+    }
+}
+
+/* ESCRITORIO (>=992px): una tarjeta por fila, horizontal y en zigzag */
+@media (min-width: 992px) {
+    .topic-card {
+        flex-direction: row;           /* visual a un lado, texto al otro */
+        align-items: stretch;
+    }
+
+    .topic-visual {
+        flex: 0 0 42%;
+        padding: 2rem;
+    }
+
+    .topic-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2.5rem;
+    }
+
+    /* Las tarjetas pares invierten el orden: visual a la derecha */
+    .topics .col:nth-child(even) .topic-card {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Celulares pequeños: menos espacio lateral */
+@media (max-width: 575.98px) {
+    .hero {
+        padding-top: 95px;
+    }
+    .hero-slide {
+        padding: 2rem 2.5rem 3.5rem;
+        min-height: 320px;
+    }
+}
+
+/* Accesibilidad: si la persona pidió menos animación, la quitamos */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .carousel-item,
+    .btn-css,
+    .demo-hover {
+        transition: none;
+    }
+}
+
+/* 9) CARRUSEL VIDEO / CÓDIGO DENTRO DE CADA TARJETA
+   Slide 1 = video · Slide 2 = código · flechas para cambiar*/
+.visual-carousel {
+    position: relative;
+    width: 100%;
+}
+
+/* Pestañas "Video | Código" (reusan los indicadores de Bootstrap) */
+.visual-tabs {
+    position: static;                  /* Bootstrap las pone absolutas, aquí van arriba del slide */
+    justify-content: flex-start;
+    gap: 0.4rem;
+    margin: 0 0 0.75rem;
+}
+
+.visual-tabs [data-bs-target] {
+    width: auto;
+    height: auto;
+    text-indent: 0;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0.25rem 0.9rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    opacity: 1;
+}
+
+.visual-tabs .active {
+    background: var(--css-blue);
+    border-color: var(--css-blue);
+    color: #fff;
+}
+
+/* Los dos slides tienen la misma altura para que la tarjeta no "salte" */
+.video-wrap,
+.code-slide {
+    height: 270px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Video */
+.video-wrap {
+    position: relative;
+    background: #000;
+}
+
+.video-wrap video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+/* Aviso que se ve solo si el archivo de video no existe */
+.video-fallback {
+    display: none;
+    margin: 0;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+.video-wrap.no-video video {
+    display: none;
+}
+
+.video-wrap.no-video .video-fallback {
+    display: flex;
+}
+
+/* Código (con scroll si es largo) */
+.code-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.9rem;
+    padding: 1.25rem 3rem;             /* 3rem a los lados: espacio para las flechas */
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Flechas: botones redondos a los lados */
+.visual-carousel .carousel-control-prev,
+.visual-carousel .carousel-control-next {
+    top: calc(50% + 1.4rem);           /* 1.4rem compensa la altura de las pestañas */
+    bottom: auto;
+    transform: translateY(-50%);
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: rgba(8, 14, 28, 0.75);
+    border: 1px solid var(--glass-border);
+    opacity: 1;
+}
+
+.visual-carousel .carousel-control-prev { left: 0.5rem; }
+.visual-carousel .carousel-control-next { right: 0.5rem; }
+
+.visual-carousel .carousel-control-prev-icon,
+.visual-carousel .carousel-control-next-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* En celular el video un poco más bajo para que quepa mejor */
+@media (max-width: 575.98px) {
+    .video-wrap,
+    .code-slide {
+        height: 230px;
+    }
+}
+
+/* 10) PESTAÑAS DE NIVEL: "Explicado fácil" / "Técnico"*/
+.level-tabs {
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.level-tabs .nav-link {
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+}
+
+.level-tabs .nav-link.active {
+    background: var(--css-blue);
+    border-color: var(--css-blue);
+    color: #fff;
+}
+
+.tab-content p {
+    margin-bottom: 0.75rem;
+}
+
+.tab-content p:last-child {
+    margin-bottom: 0;
+}
+
+.tab-content ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--text-soft);
+}
+
+.tab-content li {
+    margin-bottom: 0.5rem;
+}
+
+.tab-content li:last-child {
+    margin-bottom: 0;
+}
+
+.tab-content strong {
+    color: var(--text);
+}
+
+.tab-content p,
+.tab-content li {
+    max-width: 70ch;                   /* líneas cortas = más fácil de leer */
+}
